@@ -1,0 +1,25 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div.header {
+    border: solid 1px black;
+    text-align: center;
+    margin: 5% 0;
+}
+
+div.buttons {
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+div.results {
+    border: solid 1px black;
+    margin: 5% 0;
+}
+
+div.score {
+    border: solid 1px black;
+}

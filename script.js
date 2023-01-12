@@ -73,10 +73,12 @@ function playRound(playerSelection, computerSelection) {
 function game() {
     let playerPoints = 0;
     let computerPoints = 0;
+    
     for (let i = 0; i < 5; i++) {
         let playerSelection = getPlayerChoice();
         let computerSelection = getComputerChoice();
         let winner = playRound(playerSelection, computerSelection);
+
         if (winner === "player") {
             playerPoints++;
         } else if (winner === "computer") {
@@ -84,6 +86,7 @@ function game() {
         }
         console.log(`Current score:\nPlayer: ${playerPoints} points\nComputer: ${computerPoints} points`);
     }
+
     if (playerPoints > computerPoints) {
         console.log("Congratulations, you win!");
     } else if (playerPoints < computerPoints) {
