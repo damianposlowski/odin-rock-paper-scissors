@@ -13,12 +13,6 @@ function getComputerChoice() {
     }
 }
 
-// Get case insensitive player choice
-function getPlayerChoice() {
-    let playerChoice = prompt("Rock paper scissors! ");
-    return playerChoice.toLowerCase();
-}
-
 // Compare computer choice with player choice and return results
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === "rock") {
@@ -70,28 +64,54 @@ function playRound(playerSelection, computerSelection) {
 }
 
 // Play 5 games, asking for choice values every game
-function game() {
-    let playerPoints = 0;
-    let computerPoints = 0;
+// function game() {
+//     let playerPoints = 0;
+//     let computerPoints = 0;
     
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-        let winner = playRound(playerSelection, computerSelection);
+//     let playerSelection = getPlayerChoice();
+//     let computerSelection = getComputerChoice();
+//     let winner = playRound(playerSelection, computerSelection);
+//     if (winner === "player") {
+//         playerPoints++;
+//     } else if (winner === "computer") {
+//         computerPoints++;
+//     }
+//     console.log(`Current score:\nPlayer: ${playerPoints} points\nComputer: ${computerPoints} points`);
 
-        if (winner === "player") {
-            playerPoints++;
-        } else if (winner === "computer") {
-            computerPoints++;
-        }
-        console.log(`Current score:\nPlayer: ${playerPoints} points\nComputer: ${computerPoints} points`);
-    }
+    // if (playerPoints > computerPoints) {
+    //     console.log("Congratulations, you win!");
+    // } else if (playerPoints < computerPoints) {
+    //     console.log("You lose, better luck next time!");
+    // } else {
+    //     console.log("No one wins, it's a tie!");
+    // }
+// }
 
-    if (playerPoints > computerPoints) {
-        console.log("Congratulations, you win!");
-    } else if (playerPoints < computerPoints) {
-        console.log("You lose, better luck next time!");
-    } else {
-        console.log("No one wins, it's a tie!");
+
+let playerPoints = 0;
+let computerPoints = 0;
+
+const buttons = document.querySelectorAll('button');
+
+const player = document.querySelector('#player-score');
+const computer = document.querySelector('#computer-score');
+
+// Select buttons and add Event Listeners to playRound() with player's choice
+buttons.forEach(button => button.addEventListener('click',() => {
+    let playerSelection = button.id;
+    let computerSelection = getComputerChoice();
+    let winner = playRound(playerSelection, computerSelection);
+
+    // Display results in DOM after each round
+    if (winner === "player") {
+        playerPoints++;
+    } else if (winner === "computer") {
+        computerPoints++;
     }
-}
+    player.textContent = 'Player: ' + playerPoints;
+    computer.textContent = 'Computer: ' + computerPoints;
+}));
+
+
+
+// Stop the game when someone reaches 5 points and display the winner
