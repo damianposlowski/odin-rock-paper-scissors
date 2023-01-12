@@ -1,4 +1,9 @@
+html, body {
+    height: 100%;
+}
+
 body {
+    margin: 0;
     font-family: "Lucida Console", "Courier New", monospace;
     background-color: #FCF5EF;
 }
@@ -6,7 +11,7 @@ body {
 /* Header section */
 
 div.header {
-    margin: 100px 0;
+    padding: 100px 0;
     text-align: center;
 }
 
